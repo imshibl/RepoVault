@@ -40,9 +40,9 @@ class MainActivity : AppCompatActivity() {
         // Update the adapter with the new data
         withContext(Dispatchers.Main) {
             repositoryAdapter.setData(repositoryList)
-            if(repositoryAdapter.itemCount == 0){
+            if (repositoryList.isEmpty()) {
                 emptyBookmarksTextView.visibility = View.VISIBLE
-            }else{
+            } else {
                 emptyBookmarksTextView.visibility = View.GONE
             }
         }
@@ -88,23 +88,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = repositoryAdapter
 
 
-        // Fetch and display repositories from Room database
-        fetchRepositoriesFromDatabase()
+
 
 
 
     }
 
-    private fun fetchRepositoriesFromDatabase() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val repositories = repositoryDao.getAllRepositories()
-            repositoryAdapter.setData(repositories)
 
-            if(repositoryAdapter.itemCount == 0){
-                emptyBookmarksTextView.visibility = View.VISIBLE
-            }else{
-                emptyBookmarksTextView.visibility = View.GONE
-            }
-        }
-    }
 }
