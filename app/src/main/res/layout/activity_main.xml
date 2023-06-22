@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activities.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:background="@drawable/appbar_background"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" >
+
+    <ImageView
+        android:id="@+id/my_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="start"
+
+        android:contentDescription="@string/github_logo"
+        android:src="@drawable/github_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
+            android:letterSpacing="0.1"
+            android:text="@string/repovault"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/empty_bookmarks_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/add_your_favourite_repos"
+        android:letterSpacing="0.1"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/white"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fab_add_repo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/fab_background"
+        android:elevation="6dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/add_repo"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:backgroundTint="@color/button_color" />
+
+</RelativeLayout>

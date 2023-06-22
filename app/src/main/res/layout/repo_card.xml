@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/repoCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="20dp"
+        android:background="@drawable/card_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/repoFullName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/repo_name"
+                android:fontFamily="sans-serif"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/bookmarkIcon"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="end"
+                android:paddingEnd="10dp"
+                android:paddingStart="0dp"
+                android:clickable="true"
+                android:src="@drawable/bookmarked_icon"
+                android:contentDescription="@string/bookmarkicon"
+                android:focusable="true" />
+
+            <ImageView
+                android:id="@+id/shareIcon"
+                android:layout_width="30dp"
+                android:layout_height="34dp"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:src="@drawable/share_icon"
+                android:contentDescription="@string/share_icon"
+                android:focusable="true" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/repoDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:text="@string/repo_description"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star_icon"
+                android:contentDescription="@string/star_icon" />
+
+            <TextView
+                android:id="@+id/repoStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0"
+                android:textColor="@color/white"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+

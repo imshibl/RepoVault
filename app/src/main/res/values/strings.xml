@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RepoVault</string>
+    <string name="repovault">RepoVault</string>
+    <string name="github_logo">Github Logo</string>
+    <string name="add_repo">Add Repo</string>
+    <string name="add_your_favourite_repos">Add your favourite repos</string>
+    <string name="something_went_wrong_try_again">Something went wrong!Try again</string>
+    <string name="repository_not_found">Repository Not Found</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="repository_name">Repository Name</string>
+    <string name="star_icon">Star Icon</string>
+    <string name="_0">0</string>
+    <string name="repo_description">Anime stack, an android app build for anime lovers.this app conatins info about more than 45k+ anime shows and movies.we can also add shows and movies that we want to watch later into our watchlist.</string>
+    <string name="share_icon">Share Icon</string>
+    <string name="repo_name">imshibl/AnimeStack</string>
+    <string name="bookmarkicon">bookmarkIcon</string>
+    <string name="splash_title">RepoVault</string>
+</resources>
