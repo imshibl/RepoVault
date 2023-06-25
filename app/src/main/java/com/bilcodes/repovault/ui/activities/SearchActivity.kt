@@ -174,7 +174,17 @@ class SearchActivity : AppCompatActivity() {
             progressBar.visibility = visibility
         }
 
-        searchViewModel.isRepoAlreadySaved.observe(this) { value -> isRepoAlreadySaved = value }
+        searchViewModel.isRepoAlreadySaved.observe(this) { value ->
+            isRepoAlreadySaved = value
+
+            if (isRepoAlreadySaved) {
+                // Repository exists, update the bookmark icon to filled bookmark
+                bookmarkIcon.setImageResource(R.drawable.bookmarked_icon)
+            } else {
+                // Repository does not exist, update the bookmark icon to outline bookmark
+                bookmarkIcon.setImageResource(R.drawable.bookmark_icon)
+            }
+        }
 
         searchViewModel.repoCard.observe(this) { visibility -> repoCard.visibility = visibility }
 
@@ -193,13 +203,6 @@ class SearchActivity : AppCompatActivity() {
         searchViewModel.performSearch(ownerName, repoName)
         searchViewModel.repository.observe(this) { repository ->
             if (repository != null) {
-                if (isRepoAlreadySaved) {
-                    // Repository exists, update the bookmark icon to filled bookmark
-                    bookmarkIcon.setImageResource(R.drawable.bookmarked_icon)
-                } else {
-                    // Repository does not exist, update the bookmark icon to outline bookmark
-                    bookmarkIcon.setImageResource(R.drawable.bookmark_icon)
-                }
 
                 repositoryId = repository.id.toLong()
                 repositoryName = repository.full_name

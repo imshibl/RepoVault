@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
 
     private const val BASE_URL = "https://api.github.com/"
-    private const val API_KEY = "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"
+    private const val API_KEY = "Your api key"
 
     fun create(): GithubApiService {
 
