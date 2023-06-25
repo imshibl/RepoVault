@@ -10,10 +10,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bilcodes.repovault.ui.activities.MainActivity
 import com.bilcodes.repovault.R
 import com.bilcodes.repovault.data.local.database.entities.Repository
 import com.bilcodes.repovault.data.local.database.dao.RepositoryDao
+import com.bilcodes.repovault.ui.viewmodels.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
@@ -25,10 +25,11 @@ class RepoListViewAdapter(
     private var repositories: List<Repository>,
     private val repositoryDao: RepositoryDao,
     private val context: Context,
+    private val mainViewModel: MainViewModel
 ) : RecyclerView.Adapter<RepoListViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val repositoryCard : LinearLayout = itemView.findViewById(R.id.repoCard)
+        val repositoryCard: LinearLayout = itemView.findViewById(R.id.repoCard)
         val repoFullNameTextView: TextView = itemView.findViewById(R.id.repoFullName)
         val bookmarkIconImageView: ImageView = itemView.findViewById(R.id.bookmarkIcon)
         val shareIconImageView: ImageView = itemView.findViewById(R.id.shareIcon)
@@ -37,7 +38,8 @@ class RepoListViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.repo_card, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.repo_card, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -47,13 +49,13 @@ class RepoListViewAdapter(
         holder.repoDescriptionTextView.text = repository.description
         holder.repoStarsTextView.text = repository.stars.toString()
 
-        holder.repositoryCard.setOnClickListener{
+        holder.repositoryCard.setOnClickListener {
             val url = "https://github.com/${repository.name}"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             context.startActivity(intent)
         }
 
-        holder.shareIconImageView.setOnClickListener{
+        holder.shareIconImageView.setOnClickListener {
             val url = "https://github.com/${repository.name}"
 
             // Create a share intent
@@ -66,7 +68,7 @@ class RepoListViewAdapter(
             context.startActivity(chooserIntent)
         }
 
-        holder.bookmarkIconImageView.setOnClickListener{
+        holder.bookmarkIconImageView.setOnClickListener {
             // Call a method to delete the item from the Room database
             deleteRepository(repository, position)
         }
@@ -92,7 +94,7 @@ class RepoListViewAdapter(
             // Update the RecyclerView on the main thread
             withContext(Dispatchers.Main) {
                 notifyItemRemoved(position)
-                (context as? MainActivity)?.updateRecyclerView()
+                mainViewModel.updateRecyclerView() // Call updateRecyclerView() on the MainViewModel instance
             }
         }
     }
